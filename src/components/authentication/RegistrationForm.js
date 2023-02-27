@@ -5,21 +5,34 @@ const RegistrationForm = ({ onSubmit }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
   const [isEmailValid, setEmailValid] = useState(false);
   const [isUsernameValid, setUsernameValid] = useState(false);
   const [isPasswordValid, setPasswordValid] = useState(false);
+  const [isPasswordConfirmationValid, setPasswordConfirmationValid] = useState(false);
+
+  const [emailError, setEmailError] = useState('');
+  // const [usernameError, setUsernameError] = useState('');
+  // const [passwordError, setPasswordError] = useState('');
+  // const [passwordConfirmationError, setPasswordConfirmationError] = useState('');
+
   const [isFormValid, setFormValid] = useState(false);
 
   useEffect(() => {
-    const isFormValid = isEmailValid && isUsernameValid && isPasswordValid;
+    const isFormValid = isEmailValid && isUsernameValid && isPasswordValid && isPasswordConfirmationValid;
     setFormValid(isFormValid);
-  }, [isEmailValid, isUsernameValid, isPasswordValid]);
+  }, [isEmailValid, isUsernameValid, isPasswordValid, isPasswordConfirmationValid]);
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
     const emailRegex = /^\S+@\S+\.\S+$/;
     setEmail(email);
     setEmailValid(emailRegex.test(email));
+    if (!emailRegex.test(email)) {
+      setEmailError("L'email saisi n'est pas valide");
+    } else {
+      setEmailError('');
+    }
   };
 
   const handleUsernameChange = (event) => {
@@ -37,15 +50,11 @@ const RegistrationForm = ({ onSubmit }) => {
   const handlePasswordConfirmationChange = (event) => {
     const passwordConfirmation = event.target.value;
     setPasswordConfirmation(passwordConfirmation);
-    setPasswordValid(passwordConfirmation.length >= 6 && passwordConfirmation.length <= 20);
+    setPasswordConfirmationValid(passwordConfirmation === password);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password !== passwordConfirmation) {
-      alert("Le mot de passe et sa confirmation ne correspondent pas.");
-      return;
-    }
     if (isFormValid) {
         const formData = {
             email: email,
@@ -71,6 +80,7 @@ const RegistrationForm = ({ onSubmit }) => {
           required
         />
       </div>
+      {emailError && <div className="invalid-feedback">{emailError}</div>}
       <div className="mb-3">
         <label htmlFor="username" className="form-label">
           Pseudo
@@ -101,6 +111,7 @@ const RegistrationForm = ({ onSubmit }) => {
         <label htmlFor="password_confirmation">Confirmation du mot de passe:</label>
         <input
           type="password"
+          className="form-control"
           id="password_confirmation"
           name="password_confirmation"
           value={passwordConfirmation}
