@@ -40,3 +40,19 @@
 .row-height-custom {
   height: 440px;
 }
+
+.icon-xl {
+  width: 5rem;
+  height: 5rem;
+  line-height: 5rem;
+  text-align: center;
+  font-size: 1.9rem;
+}
+
+.img-icon-xl {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
