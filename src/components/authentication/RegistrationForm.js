@@ -56,14 +56,17 @@ const RegistrationForm = ({ onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid) {
-        const formData = {
-            email: email,
-            username: username,
-            password: password
-          };
-        onSubmit(formData);
+      const formData = {
+        email: email,
+        username: username,
+        password: password
+      };
+      return onSubmit(formData); // Return the promise here
+    } else {
+      return Promise.reject(new Error('Form is not valid')); // Return a rejected promise here
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
