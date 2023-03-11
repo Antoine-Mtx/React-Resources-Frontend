@@ -1,0 +1,56 @@
+src/
+├── actions/                 # Contains action creators
+│   ├── dataActions.js
+│   └── userActions.js
+├── assets/                  # Contains static assets such as images and icons
+│   ├── icons/
+│   └── images/
+├── components/              # Contains reusable UI components
+│   ├── authentication/      # Contains components related to authentication
+│   │   ├── LoginForm.js
+│   │   └── RegistrationForm.js
+│   ├── categories/          # Contains components related to categories
+│   │   ├── CategoryList.js
+│   ├── layout/              # Contains components related to layout
+│   │   ├── header/          # Contains header-related components
+│   │       ├── ProfileDropdown.js
+│   │   ├── Footer.js
+│   │   ├── Header.js
+│   │   ├── Layout.js
+│   │   └── Main.js
+│   └── resources/           # Contains components related to resources
+│       ├── ResourceList.js
+├── containers/              # Contains components that are connected to the store
+│   ├── authentication/      # Contains containers related to authentication
+│   │   ├── LoginContainer.js
+│   │   └── RegistrationContainer.js
+│   ├── categories/          # Contains containers related to categories
+│   │   ├── CategoryListContainer.js
+│   └── resources/           # Contains containers related to resources
+│       ├── ResourceListContainer.js
+├── hooks/                   # Contains custom hooks
+├── middlewares/             # Contains Redux middleware
+├── pages/                   # Contains top-level page components
+│   ├── authentication/      # Contains authentication-related pages
+│   │   ├── LoginPage.js
+│   │   └── RegistrationPage.js
+│   ├── categories/          # Contains categories-related pages
+│   │   ├── CategoryListPage.js
+│   └── resources/           # Contains resources-related pages
+│       ├── ResourceListPage.js
+├── reducers/                # Contains Redux reducers
+│   ├── dataReducer.js
+│   └── userReducer.js
+├── services/                # Contains API service functions
+│   ├── authenticationService.js
+│   └── dataService.js
+├── store/                   # Contains Redux store configuration
+│   └── store.js
+├── utils/                   # Contains utility functions
+├── App.css
+├── App.js
+├── App.test.js
+├── index.css
+├── index.js
+├── reportWebVitals.js
+└── setupTests.js

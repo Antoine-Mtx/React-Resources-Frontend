@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store/appStore.js';
+import store from './store/store.js';
 import Layout from './components/layout/Layout.js';
 import ResourceListPage from './pages/resources/ResourceListPage.js';
 import CategoryListPage from './pages/categories/CategoryListPage.js';

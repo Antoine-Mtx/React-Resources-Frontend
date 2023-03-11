@@ -11,6 +11,7 @@ const LoginContainer = () => {
   const handleSubmit = (formData) => {
     dispatch(login(formData))
       .then(() => navigate('/resources'))
+      .catch((error) => console.log(error));
   };
 
   return (

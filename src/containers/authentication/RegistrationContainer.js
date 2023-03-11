@@ -9,12 +9,12 @@ const RegistrationContainer = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (formData) => {
-    dispatch(register(formData)).then(() => {
-      navigate('/login');
-    }).catch((error) => {
-      console.log(error);
-    });
-  };  
+    dispatch(register(formData))
+      .then(() => navigate('/login'))
+      .catch((error) => console.log(error));
+  };
+  
+  
 
   return <RegistrationForm onSubmit={handleSubmit} />;
 };
