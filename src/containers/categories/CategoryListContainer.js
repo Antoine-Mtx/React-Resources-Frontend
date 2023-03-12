@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CategoryList from '../../components/categories/CategoryList.js';
-import axios from 'axios';
+import { fetchCategories } from '../../actions/categoryActions.js';
 
 const CategoryListContainer = () => {
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+  const { categories, loading, error } = useSelector((state) => state.categoryList);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-
-    axios.get('http://localhost:8000/api/category', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        setCategories(response.data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   return (
-    <CategoryList categories={categories} />
+    <CategoryList categories={categories} loading={loading} error={error} />
   );
 };
 
 export default CategoryListContainer;
-

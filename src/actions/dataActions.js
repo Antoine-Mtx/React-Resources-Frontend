@@ -1,4 +1,4 @@
-import { fetchData as fetchFromService } from '../services/dataService.js';
+import dataService from '../services/dataService.js';
 
 export const fetchDataRequest = () => ({
   type: 'FETCH_DATA_REQUEST',
@@ -18,7 +18,7 @@ export const fetchData = () => {
   return async (dispatch) => {
     try {
       dispatch(fetchDataRequest());
-      const data = await fetchFromService();
+      const data = await dataService.fetchFromService();
       dispatch(fetchDataSuccess(data));
     } catch (error) {
       dispatch(fetchDataFailure(error.message));
