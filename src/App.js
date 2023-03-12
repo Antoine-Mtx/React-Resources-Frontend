@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store/store.js';
 import Layout from './components/layout/Layout.js';
 import ResourceListPage from './pages/resources/ResourceListPage.js';
+import ResourceDetailPage from './pages/resources/ResourceDetailPage.js';
 import CategoryListPage from './pages/categories/CategoryListPage.js';
 import RegistrationPage from './pages/authentication/RegistrationPage.js';
 import LoginPage from './pages/authentication/LoginPage.js';
@@ -20,9 +21,9 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/resources" element={<ResourceListPage />} />
+            <Route path="/resources/:id" element={<ResourceDetailPage />} />
             <Route path="/categories" element={<CategoryListPage />} />
-            {/* <Route path="/resources/:id" element={<ResourceDetailPage />} />
-            <Route path="/resources/new" element={<ResourceFormPage />} /> */}
+            {/* <Route path="/resources/new" element={<ResourceFormPage />} /> */}
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/login" element={<LoginPage />} />
           </Routes>

@@ -2,13 +2,15 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import dataReducer from '../reducers/dataReducer.js';
-import userReducer from '../reducers/userReducer.js';
+import authenticationReducer from '../reducers/authenticationReducer.js';
+import resourceReducer from '../reducers/resourceReducer.js';
+import categoryReducer from '../reducers/categoryReducer.js';
 
 const store = configureStore({
   reducer: {
-    data: dataReducer,
-    user: userReducer,
+    authentication: authenticationReducer,
+    resource: resourceReducer,
+    category: categoryReducer,
   },
   middleware: [thunkMiddleware],
 });

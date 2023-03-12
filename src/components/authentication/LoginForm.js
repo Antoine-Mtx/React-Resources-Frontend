@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const RegistrationForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, loading }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -40,37 +40,43 @@ const RegistrationForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">
-          Email
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-          required
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="password" className="form-label">
-          Mot de passe
-        </label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-          required
-        />
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Se connecter
-      </button>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Mot de passe
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Se connecter
+          </button>
+        </>
+      )}
     </form>
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;

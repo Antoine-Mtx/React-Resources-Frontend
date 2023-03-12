@@ -1,7 +1,7 @@
 src/
 ├── actions/                 # Contains action creators
 │   ├── dataActions.js
-│   └── userActions.js
+│   └── authenticationActions.js
 ├── assets/                  # Contains static assets such as images and icons
 │   ├── icons/
 │   └── images/

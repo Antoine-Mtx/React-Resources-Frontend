@@ -55,6 +55,18 @@ const resourceService = {
       throw new Error('Failed to archive resource.');
     }
   },
+  validateResource: async (id) => {
+    try {
+      const response = await axios.put(`${baseUrl}/${id}`, { visibility: true }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error('Failed to validate resource.');
+    }
+  },
 };
 
 export default resourceService;

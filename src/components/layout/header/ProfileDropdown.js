@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../../actions/userActions.js';
+import { logout } from '../../../actions/authenticationActions.js';
 
 const ProfileDropdown = ({ user }) => {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RegistrationForm from '../../components/authentication/RegistrationForm.js';
 import { useDispatch } from 'react-redux';
-import { register } from '../../actions/userActions.js';
+import { register } from '../../actions/authenticationActions.js';
 
 const RegistrationContainer = () => {
   const navigate = useNavigate();

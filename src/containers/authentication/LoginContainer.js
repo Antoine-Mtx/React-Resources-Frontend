@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../../components/authentication/LoginForm.js';
-import { useDispatch } from 'react-redux';
-import { login } from '../../actions/userActions.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../actions/authenticationActions.js';
 
 const LoginContainer = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.authentication.loading);
 
   const handleSubmit = (formData) => {
     dispatch(login(formData))
@@ -16,7 +17,7 @@ const LoginContainer = () => {
 
   return (
     <>
-      <LoginForm onSubmit={handleSubmit} />
+      <LoginForm onSubmit={handleSubmit} loading={loading} />
     </>
   );
 };

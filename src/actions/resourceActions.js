@@ -63,7 +63,7 @@ export const fetchResourceFailure = (error) => ({
 export const fetchResource = (id) => async (dispatch) => {
   dispatch(fetchResourceRequest());
   try {
-    const resource = await resourceService.getResource(id);
+    const resource = await resourceService.getResourceById(id);
     dispatch(fetchResourceSuccess(resource));
   } catch (error) {
     dispatch(fetchResourceFailure(error.message));
