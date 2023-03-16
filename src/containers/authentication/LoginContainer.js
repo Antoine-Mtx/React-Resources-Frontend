@@ -10,7 +10,7 @@ const LoginContainer = () => {
   const loading = useSelector(state => state.authentication.loading);
   const error = useSelector(state => state.authentication.error);
 
-  const handleSubmit = (formData) => {
+  const handleLogin = (formData) => {
     dispatch(login(formData))
       .then(() => navigate('/resources'))
       .catch((error) => console.log(error));
@@ -18,7 +18,7 @@ const LoginContainer = () => {
 
   return (
     <>
-      <LoginForm onSubmit={handleSubmit} loading={loading} error={error} />
+      <LoginForm onSubmit={handleLogin} loading={loading} error={error} />
     </>
   );
 };
