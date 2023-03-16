@@ -3,7 +3,9 @@ import {
   FETCH_USER_REQUEST,
   FETCH_USER_SUCCESS,
   FETCH_USER_FAILURE,
-  SET_USER,
+  SET_USER_REQUEST,
+  SET_USER_SUCCESS,
+  SET_USER_FAILURE,
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
@@ -39,10 +41,29 @@ export const fetchUser = () => async (dispatch) => {
   }
 };
 
-export const setUser = (user) => ({
-  type: SET_USER,
+export const setUserRequest = () => ({
+  type: SET_USER_REQUEST,
+});
+
+export const setUserSuccess = (user) => ({
+  type: SET_USER_SUCCESS,
   payload: user,
 });
+
+export const setUserFailure = (error) => ({
+  type: SET_USER_FAILURE,
+  payload: error,
+});
+
+export const setUser = () => async (dispatch) => {
+  dispatch(setUserRequest());
+  try {
+    const user = await authenticationService.setUser(formData);
+    dispatch(setUserSuccess(user));
+  } catch (error) {
+    dispatch(setUserFailure(error.message));
+  }
+};
 
 export const loginRequest = () => ({
   type: LOGIN_USER_REQUEST,
