@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const LoginForm = ({ onSubmit, loading }) => {
+const LoginForm = ({ handleLogin, loading, error }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -34,14 +34,18 @@ const LoginForm = ({ onSubmit, loading }) => {
             email: email,
             password: password
           };
-        onSubmit(formData);
+        handleLogin(formData);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {loading ? (
+      { loading ? (
         <p>Loading...</p>
+      ) : error ? (
+          <div className="alert alert-danger" role="alert">
+            <p>{error.message}</p>
+          </div>
       ) : (
         <>
           <div className="mb-3">
