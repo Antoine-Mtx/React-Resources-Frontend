@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const RegistrationForm = ({ onSubmit }) => {
+const RegistrationForm = ({ handleRegistration, loading, error }) => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -61,7 +61,7 @@ const RegistrationForm = ({ onSubmit }) => {
         username: username,
         password: password
       };
-      return onSubmit(formData); // Return the promise here
+      return handleRegistration(formData); // Return the promise here
     } else {
       return Promise.reject(new Error('Form is not valid')); // Return a rejected promise here
     }
