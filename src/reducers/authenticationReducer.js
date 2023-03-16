@@ -19,10 +19,9 @@ const initialState = {
 const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER_REQUEST:
-    case LOGOUT_USER_REQUEST:
-    case REGISTER_USER_REQUEST:
       return {
         ...state,
+        user: null,
         loading: true,
         error: null,
       };
@@ -33,6 +32,20 @@ const authenticationReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case LOGIN_USER_FAILURE:
+      return {
+        ...state,
+        user: null,
+        loading: false,
+        error: action.payload,
+      };
+    case LOGOUT_USER_REQUEST:
+    case REGISTER_USER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
     case LOGOUT_USER_SUCCESS:
       return initialState;
     case REGISTER_USER_SUCCESS:
@@ -41,7 +54,6 @@ const authenticationReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
-    case LOGIN_USER_FAILURE:
     case LOGOUT_USER_FAILURE:
     case REGISTER_USER_FAILURE:
       return {
