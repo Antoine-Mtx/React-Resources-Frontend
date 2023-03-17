@@ -13,15 +13,7 @@ const ResourceDetailContainer = () => {
     dispatch(fetchResource(id));
   }, [dispatch, id]);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  return <ResourceDetail resource={resource} />;
+  return <ResourceDetail resource={resource} loading={loading} error={error} />;
 };
 
 export default ResourceDetailContainer;

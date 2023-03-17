@@ -1,5 +1,5 @@
 import React from 'react';
-import ResourceListContainer from '../../containers/resources/ResourceListContainer.js';
+import ResourceTabsContainer from '../../containers/resources/ResourceTabsContainer.js';
 
 const ResourceListPage = () => {
   return (
@@ -10,7 +10,7 @@ const ResourceListPage = () => {
           <p className="mb-0">Choisissez les ressources que vous souhaitez suivre</p>
         </div>
       </div>
-      <ResourceListContainer />
+      <ResourceTabsContainer />
     </div>
   );
 };
