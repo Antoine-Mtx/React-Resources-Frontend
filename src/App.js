@@ -1,10 +1,11 @@
 import './App.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store.js';
 import Layout from './components/layout/Layout.js';
+import { restoreAuthenticatedUser } from './actions/authenticationActions.js';
 import ResourceListPage from './pages/resources/ResourceListPage.js';
 import ResourceDetailPage from './pages/resources/ResourceDetailPage.js';
 import CategoryListPage from './pages/categories/CategoryListPage.js';
@@ -15,6 +16,11 @@ import LoginPage from './pages/authentication/LoginPage.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  useEffect(() => {
+    // Restore the authenticated user from localStorage when the app loads
+    store.dispatch(restoreAuthenticatedUser());
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>

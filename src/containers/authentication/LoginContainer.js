@@ -18,7 +18,7 @@ const LoginContainer = () => {
 
   return (
     <>
-      <LoginForm onSubmit={handleLogin} loading={loading} error={error} />
+      <LoginForm handleLogin={handleLogin} loading={loading} error={error} />
     </>
   );
 };

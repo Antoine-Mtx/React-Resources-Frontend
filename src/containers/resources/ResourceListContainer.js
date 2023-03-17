@@ -5,7 +5,9 @@ import { fetchResources } from '../../actions/resourceActions.js';
 
 const ResourceListContainer = () => {
   const dispatch = useDispatch();
-  const { resources, loading, error } = useSelector(state => state.resource.resources);
+  const resources = useSelector(state => state.resource.resources);
+  const loading = useSelector(state => state.resource.loading);
+  const error = useSelector(state => state.resource.error);
 
   useEffect(() => {
     dispatch(fetchResources());

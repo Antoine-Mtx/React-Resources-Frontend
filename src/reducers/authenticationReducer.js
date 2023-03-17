@@ -2,6 +2,7 @@ import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
+  RESTORE_AUTHENTICATED_USER,
   LOGOUT_USER_REQUEST,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAILURE,
@@ -38,6 +39,11 @@ const authenticationReducer = (state = initialState, action) => {
         user: null,
         loading: false,
         error: action.payload,
+      };
+    case RESTORE_AUTHENTICATED_USER:
+      return {
+        ...state,
+        user: action.payload,
       };
     case LOGOUT_USER_REQUEST:
     case REGISTER_USER_REQUEST:

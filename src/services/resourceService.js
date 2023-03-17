@@ -1,11 +1,11 @@
-import axios from 'axios';
+import apiClient from './apiClient.js';
 
 const baseUrl = 'http://localhost:8000/api/resource';
 
 const resourceService = {
   getResources: async () => {
     try {
-      const response = await axios.get(baseUrl);
+      const response = await apiClient.get(baseUrl);
       return response.data;
     } catch (error) {
       throw new Error('Failed to get resources.');
@@ -13,7 +13,7 @@ const resourceService = {
   },  
   getResourceById: async (id) => {
     try {
-      const response = await axios.get(`${baseUrl}/${id}`);
+      const response = await apiClient.get(`${baseUrl}/${id}`);
       return response.data;
     } catch (error) {
       throw new Error('Failed to get resource by id.');
@@ -21,11 +21,7 @@ const resourceService = {
   },  
   createResource: async (formData) => {
     try {
-      const response = await axios.post(baseUrl, formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await apiClient.post(baseUrl, formData);
       return response.data;
     } catch (error) {
       throw new Error('Failed to create resource.');
@@ -33,11 +29,7 @@ const resourceService = {
   },  
   updateResource: async (id, formData) => {
     try {
-      const response = await axios.put(`${baseUrl}/${id}`, formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await apiClient.put(`${baseUrl}/${id}`, formData);
       return response.data;
     } catch (error) {
       throw new Error('Failed to update resource.');
@@ -45,11 +37,7 @@ const resourceService = {
   },  
   archiveResource: async (id) => {
     try {
-      const response = await axios.put(`${baseUrl}/${id}`, { isArchived: true }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await apiClient.put(`${baseUrl}/${id}`, { isArchived: true });
       return response.data;
     } catch (error) {
       throw new Error('Failed to archive resource.');
@@ -57,11 +45,7 @@ const resourceService = {
   },
   validateResource: async (id) => {
     try {
-      const response = await axios.put(`${baseUrl}/${id}`, { visibility: true }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await apiClient.put(`${baseUrl}/${id}`, { visibility: true });
       return response.data;
     } catch (error) {
       throw new Error('Failed to validate resource.');

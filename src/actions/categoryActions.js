@@ -38,7 +38,7 @@ export const fetchCategories = () => async (dispatch) => {
     const categories = await categoryService.getCategories();
     dispatch(fetchCategoriesSuccess(categories));
   } catch (error) {
-    dispatch(fetchCategoriesFailure(error.message));
+    dispatch(fetchCategoriesFailure(error));
   }
 };
 
@@ -60,7 +60,7 @@ export const fetchCategoryFailure = (error) => ({
 export const fetchCategory = (id) => async (dispatch) => {
   dispatch(fetchCategoryRequest());
   try {
-    const category = await categoryService.getCategory(id);
+    const category = await categoryService.getCategoryById(id);
     dispatch(fetchCategorySuccess(category));
   } catch (error) {
     dispatch(fetchCategoryFailure(error.message));

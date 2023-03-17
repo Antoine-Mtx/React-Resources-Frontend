@@ -18,8 +18,9 @@ const RegistrationContainer = () => {
 
   return (
     <>
-      <RegistrationForm onSubmit={handleRegistration} loading={loading} error={error} />
+      <RegistrationForm handleRegistration={handleRegistration} loading={loading} error={error} />
     </>
-  };
+  );
+};
 
 export default RegistrationContainer;

@@ -5,7 +5,9 @@ import { fetchCategories } from '../../actions/categoryActions.js';
 
 const CategoryListContainer = () => {
   const dispatch = useDispatch();
-  const { categories, loading, error } = useSelector((state) => state.category.categories);
+  const categories = useSelector((state) => state.category.categories);
+  const loading = useSelector(state => state.category.loading);
+  const error = useSelector(state => state.category.error);
 
   useEffect(() => {
     dispatch(fetchCategories());
