@@ -6,9 +6,20 @@ const defaultImage = 'https://img.freepik.com/free-vector/website-faq-section-us
 
 const TutorialCard = ({ tutorial }) => {
   return (
-    <div className="card shadow h-100 d-flex flex-column">
-      <img src={tutorial.tutorial.image ? tutorial.tutorial.image : defaultImage} className="card-img-top flex-grow-5" alt={tutorial.name} />
-      <div className="card-body flex-grow-5">
+    <div className="custom-card shadow">
+      <div
+        className="custom-card-header"
+        style={{
+          backgroundImage: `url(${tutorial.tutorial.image ? tutorial.tutorial.image : defaultImage})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          position: 'relative'
+        }}
+      >
+        {/* <img src={tutorial.tutorial.image ? tutorial.tutorial.image : defaultImage} alt={tutorial.name} /> */}
+      </div>
+      <div className="custom-card-body">
         <div className="d-flex flex-row justify-content-between mb-2">
           {/* eslint-disable-next-line */}
           <a href="#" className="badge bg-success bg-opacity-10 text-success">
@@ -24,7 +35,7 @@ const TutorialCard = ({ tutorial }) => {
           <p className="card-text">{tutorial.description}</p>
         </Link>
       </div>
-      <div className="card-footer flex-grow-2 d-flex justify-content-between align-items-center">
+      <div className="custom-card-footer d-flex justify-content-between align-items-center">
         {/* eslint-disable-next-line */}
         <a href="#">
           {tutorial.user?.username}
