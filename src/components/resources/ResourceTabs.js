@@ -9,7 +9,7 @@ const ResourceTabs = ({ tutorials, informations, events, loading, error }) => {
 
   return (
     <Tab.Container activeKey={activeKey} onSelect={(k) => setActiveKey(k)}>
-      <Nav variant="pills" className="mb-3 d-flex justify-content-center gap-4">
+      <Nav variant="pills" className="nav nav-pills nav-pills-bg-soft justify-content-center mb-4 px-3 gap-4">
         <Nav.Item>
           <Nav.Link eventKey="tutorials">Tutoriels</Nav.Link>
         </Nav.Item>

@@ -26,6 +26,7 @@ function App() {
       <Router>
         <Layout>
           <Routes>
+            <Route exact path="/" element={<ResourceListPage />} />
             <Route path="/resources" element={<ResourceListPage />} />
             <Route path="/resources/:id" element={<ResourceDetailPage />} />
             <Route path="/categories" element={<CategoryListPage />} />

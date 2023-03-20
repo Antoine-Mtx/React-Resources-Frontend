@@ -37,6 +37,11 @@
   }
 }
 
+.img-80 {
+  width: 80px;
+  height: 80px;
+}
+
 .custom-card {
   display: grid;
   grid-template-rows: 5fr 5fr 1fr;
