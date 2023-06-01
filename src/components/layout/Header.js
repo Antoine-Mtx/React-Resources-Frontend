@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Navbar, Container, Nav, Image } from 'react-bootstrap';
+import { Navbar, Nav, Image } from 'react-bootstrap';
 import logo from '../../assets/images/logo.png';
 import ProfileDropdown from './header/ProfileDropdown.js';
 

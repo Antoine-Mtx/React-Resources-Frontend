@@ -54,7 +54,7 @@ const LoginForm = ({ handleLogin, loading, error }) => {
             </label>
             <input
               type="email"
-              className="form-control"
+              className={`form-control ${isEmailValid ? 'is-valid' : ''}`}
               id="email"
               value={email}
               onChange={handleEmailChange}
