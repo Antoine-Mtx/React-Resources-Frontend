@@ -43,13 +43,32 @@ const RegistrationForm = ({ handleRegistration, loading, error }) => {
     setUsernameError(isUsernameValid ? '' : 'Le pseudo doit contenir entre 3 et 20 caractères');
   };
   
+  const commonPasswords = ["123456", "password", "admin"]; // add more common passwords
+
   const handlePasswordChange = (event) => {
     const password = event.target.value;
     setPassword(password);
-    const isPasswordValid = password.length >= 6 && password.length <= 20;
+  
+    // Check if password is in commonPasswords list
+    const isCommonPassword = commonPasswords.includes(password);
+    if (isCommonPassword) {
+      setPasswordValid(false);
+      setPasswordError('Ce mot de passe est trop courant');
+      return;
+    }
+  
+    // Check for length, upper and lowercase letters, special characters
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+    const isPasswordValid = passwordRegex.test(password);
     setPasswordValid(isPasswordValid);
-    setPasswordError(isPasswordValid ? '' : 'Le mot de passe doit contenir entre 6 et 20 caractères');
+  
+    if (!isPasswordValid) {
+      setPasswordError('Le mot de passe doit contenir au moins 8 caractères, avec au moins une majuscule, une minuscule, un chiffre et un caractère spécial.');
+    } else {
+      setPasswordError('');
+    }
   };
+  
   
   const handlePasswordConfirmationChange = (event) => {
     const passwordConfirmation = event.target.value;
